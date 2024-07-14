@@ -1,0 +1,45 @@
+Order	
+OrderID	10285
+CustomerID	
+EmployeeID	
+OrderDate	
+RequiredDate	
+ShippedDate	
+ShipVia	
+Freight	
+ShipName	
+ShipAddress	
+ShipCity	
+ShipRegion	
+ShipPostalCode	
+ShipCountry	
+Product	
+ProductID	
+ProductName	
+SupplierID	
+CategoryID	
+QuantityPerUnit	
+UnitPrice	
+UnitsInStock	
+UnitsOnOrder	
+ReorderLevel	
+Discontinued	
+
+https://services.odata.org/V4/Northwind/Northwind.svc/Orders?$select=OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry
+
+https://services.odata.org/V4/Northwind/Northwind.svc/Orders?$filter=EmployeeID eq 1 and OrderID eq 10306$select=OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry
+
+
+https://services.odata.org/V4/Northwind/Northwind.svc/Orders?$filter=EmployeeID eq 1&$select=OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry
+
+https://services.odata.org/V4/Northwind/Northwind.svc/Orders?$filter=ShippedDate eq 1996-07-08 and ShipCountry eq Germany&$format=json
+
+"https://services.odata.org/V4/Northwind/Northwind.svc/Orders?$filter=ShippedDate%20eq%201996-07-08%20and%20ShipCountry%20eq%20Germany?$format=json"
+"https://services.odata.org/V4/Northwind/Northwind.svc/Orders?$filter=ShippedDate%20eq%201996-07-08%20and%20ShipCountry%20eq%20'Germany'&$format=json
+
+
+get_two_categories_and_values(category1='ShipName', value1='Ernst Handel', category2='ShippedDate', value2='1996-07')
+https://services.odata.org/V4/Northwind/Northwind.svc/Orders?$filter=ShipName eq Ernst Handel and ShippedDate eq 1996-07 &$format=json
+
+
+

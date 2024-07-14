@@ -1,0 +1,28 @@
+Lets talk about function calling via LLM's.
+
+
+from utils import query_raven
+
+def get_northwind_data_details(Category: str, ID: str):
+    """
+    Get Categories. You can collect Order with its Order ID or Product with its Product ID.
+    """
+    url = f"https://services.odata.org/V2/Northwind/Northwind.svc/{Category}({ID})?$format=json"
+    response = r.get(url)
+    return response.json()
+
+
+
+
+raven_functions = \
+f'''
+def get_northwind_data_details(Category : str,  ID : str):
+    """
+    
+    Get Categories. You can collect Order with its Order ID or Product with its Product ID.
+
+    """
+
+User Query: {USER_QUERY}<human_end>
+'''
+call = query_raven(raven_functions)
