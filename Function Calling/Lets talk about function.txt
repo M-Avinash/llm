@@ -1,28 +1,18 @@
-Lets talk about function calling via LLM's.
+I have function calls in my program which fills functions in this manner. They are calling northwind odata services
 
+This function call -> get_single_category_and_value(cat1='ShipVia', value1='3') feeds values to this function:
 
-from utils import query_raven
-
-def get_northwind_data_details(Category: str, ID: str):
-    """
-    Get Categories. You can collect Order with its Order ID or Product with its Product ID.
-    """
-    url = f"https://services.odata.org/V2/Northwind/Northwind.svc/{Category}({ID})?$format=json"
+    url = f"https://services.odata.org/V4/Northwind/Northwind.svc/Orders?$filter={cat1} eq {value1}&$format=json"
     response = r.get(url)
     return response.json()
 
 
+Ad this function call -> get_northwind_data_details(Category='Products', ID='2') feeds values to this function:
 
+    url = f"https://services.odata.org/V2/Northwind/Northwind.svc/{Category}({ID})?$format=json"
+    response = r.get(url)
+    return response.json()
 
-raven_functions = \
-f'''
-def get_northwind_data_details(Category : str,  ID : str):
-    """
-    
-    Get Categories. You can collect Order with its Order ID or Product with its Product ID.
+The challenge I"m facing is that some of the values which need to be input intop the fucntion are string values and need to be placed in single quotes where as some do not need single quotes. This is of course based on the northwind odata data types of the fields.
 
-    """
-
-User Query: {USER_QUERY}<human_end>
-'''
-call = query_raven(raven_functions)
+How do I detect which URL value needs quotes and automatically append them to the function dynamically during the function call ?
